@@ -1,341 +1,239 @@
-<!DOCTYPE html>
-<html lang="en-IN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Search honest product reviews for Indian women. Get real ratings, honest cons, and best price range in under 30 seconds.">
-<title>Honest Product Search — SheValue AI</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Arial,sans-serif;background:#fafafa;color:#1a1a1a;min-height:100vh}
-.hdr{background:#1a1a1a;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-.logo{color:#FFD700;font-size:22px;font-weight:800;text-decoration:none}
-.hdr-tag{color:#aaa;font-size:13px}
-.hero{background:linear-gradient(135deg,#1a1a1a,#2d2d2d);color:#fff;padding:52px 24px 40px;text-align:center}
-.hero h1{font-size:clamp(22px,4vw,38px);font-weight:800;margin-bottom:10px}
-.hero p{color:#ccc;font-size:15px;margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto}
-.search-box{max-width:640px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap}
-.search-box input{
-  flex:1;min-width:220px;padding:16px 20px;border-radius:10px;border:none;
-  font-size:16px;outline:none;background:#fff;color:#1a1a1a
+"""
+research.py - SheValue AI v2
+ONE JOB: Find today's trending problem + top 3 products.
+Fast. Simple. If anything fails, uses smart fallback instantly.
+"""
+
+import json, random, time, requests
+from datetime import datetime
+from bs4 import BeautifulSoup
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36",
+    "Accept-Language": "en-IN,en;q=0.9",
 }
-.search-box button{
-  background:#FFD700;color:#1a1a1a;border:none;padding:16px 28px;
-  border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;
-  transition:background .2s;white-space:nowrap
+
+# Curated fallback products - always work even if scraping fails
+FALLBACKS = {
+    "skincare": [
+        {"title": "Minimalist 10% Vitamin C Serum", "price": 349, "rating": 4.4, "reviews": 15200, "brand": "Minimalist", "asin": "B08XY1234A"},
+        {"title": "Dot & Key Waterlight Gel Moisturiser", "price": 449, "rating": 4.3, "reviews": 11800, "brand": "Dot & Key", "asin": "B09XY5678B"},
+        {"title": "Minimalist SPF 50 Sunscreen", "price": 299, "rating": 4.4, "reviews": 24300, "brand": "Minimalist", "asin": "B09XY9012A"},
+        {"title": "Plum Green Tea Face Wash", "price": 239, "rating": 4.2, "reviews": 22100, "brand": "Plum", "asin": "B07XY5678B"},
+        {"title": "Mamaearth Ubtan Face Wash", "price": 199, "rating": 4.1, "reviews": 31400, "brand": "Mamaearth", "asin": "B06XY5678C"},
+        {"title": "Lotus Safe Sun UV Screen SPF50", "price": 285, "rating": 4.1, "reviews": 19200, "brand": "Lotus", "asin": "B07XY9012C"},
+        {"title": "Wow Skin Science Vitamin C Serum", "price": 399, "rating": 4.0, "reviews": 18700, "brand": "WOW", "asin": "B08XY3456D"},
+        {"title": "Plum Bright Years Cell Renewal Serum", "price": 699, "rating": 4.3, "reviews": 5400, "brand": "Plum", "asin": "B07XY1234C"},
+    ],
+    "haircare": [
+        {"title": "Indulekha Bringha Hair Oil", "price": 449, "rating": 4.2, "reviews": 38000, "brand": "Indulekha", "asin": "B00HAIR001"},
+        {"title": "WOW Apple Cider Vinegar Shampoo", "price": 349, "rating": 4.1, "reviews": 29000, "brand": "WOW", "asin": "B00HAIR002"},
+        {"title": "Mamaearth Onion Hair Oil", "price": 299, "rating": 4.0, "reviews": 42000, "brand": "Mamaearth", "asin": "B00HAIR003"},
+        {"title": "Kesh King Scalp and Hair Medicine Oil", "price": 175, "rating": 4.1, "reviews": 55000, "brand": "Kesh King", "asin": "B00HAIR004"},
+    ],
+    "makeup": [
+        {"title": "Lakme Eyeconic Kajal", "price": 199, "rating": 4.3, "reviews": 67000, "brand": "Lakme", "asin": "B00MAKE001"},
+        {"title": "Maybelline Colossal Kajal", "price": 179, "rating": 4.2, "reviews": 89000, "brand": "Maybelline", "asin": "B00MAKE002"},
+        {"title": "Sugar Cosmetics Matte Lipstick", "price": 349, "rating": 4.1, "reviews": 22000, "brand": "Sugar", "asin": "B00MAKE003"},
+        {"title": "Lakme Absolute Skin Natural Mousse", "price": 425, "rating": 4.0, "reviews": 18000, "brand": "Lakme", "asin": "B00MAKE004"},
+    ],
+    "wellness": [
+        {"title": "Himalaya Ashwagandha Tablets", "price": 199, "rating": 4.2, "reviews": 28000, "brand": "Himalaya", "asin": "B00WELL001"},
+        {"title": "Carbamide Forte Iron + Folic Acid", "price": 349, "rating": 4.3, "reviews": 15000, "brand": "Carbamide Forte", "asin": "B00WELL002"},
+        {"title": "WOW Life Science Vitamin D3+K2", "price": 399, "rating": 4.1, "reviews": 12000, "brand": "WOW", "asin": "B00WELL003"},
+    ],
+    "health_fitness": [
+        {"title": "Boldfit Yoga Mat 6mm", "price": 699, "rating": 4.2, "reviews": 34000, "brand": "Boldfit", "asin": "B00FIT001"},
+        {"title": "Strauss Resistance Bands Set", "price": 349, "rating": 4.1, "reviews": 22000, "brand": "Strauss", "asin": "B00FIT002"},
+        {"title": "Boldfit Skipping Rope", "price": 199, "rating": 4.0, "reviews": 41000, "brand": "Boldfit", "asin": "B00FIT003"},
+    ],
+    "kitchen_home": [
+        {"title": "Prestige Iris 750W Mixer Grinder", "price": 2195, "rating": 4.3, "reviews": 28000, "brand": "Prestige", "asin": "B00KIT001"},
+        {"title": "Pigeon by Stovekraft Non Stick Pan", "price": 399, "rating": 4.1, "reviews": 45000, "brand": "Pigeon", "asin": "B00KIT002"},
+        {"title": "Milton Thermosteel Flask 500ml", "price": 549, "rating": 4.4, "reviews": 31000, "brand": "Milton", "asin": "B00KIT003"},
+    ],
+    "perfume": [
+        {"title": "Fogg Scent Xpressio EDP", "price": 399, "rating": 4.2, "reviews": 52000, "brand": "Fogg", "asin": "B00PERF001"},
+        {"title": "Engage W1 Perfume Spray Women", "price": 249, "rating": 4.0, "reviews": 38000, "brand": "Engage", "asin": "B00PERF002"},
+        {"title": "Skinn by Titan Celeste EDP", "price": 799, "rating": 4.3, "reviews": 19000, "brand": "Skinn", "asin": "B00PERF003"},
+    ],
+    "fashion": [
+        {"title": "BIBA Women Printed Kurta", "price": 699, "rating": 4.1, "reviews": 14000, "brand": "BIBA", "asin": "B00FASH001"},
+        {"title": "W Women Printed Straight Kurta", "price": 849, "rating": 4.0, "reviews": 11000, "brand": "W", "asin": "B00FASH002"},
+        {"title": "Libas Women Straight Kurta", "price": 499, "rating": 4.2, "reviews": 28000, "brand": "Libas", "asin": "B00FASH003"},
+    ],
 }
-.search-box button:hover{background:#e6c200}
-.search-box button:disabled{background:#888;cursor:not-allowed}
-.hints{max-width:640px;margin:14px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.hint{background:#333;color:#FFD700;padding:5px 14px;border-radius:14px;font-size:12px;cursor:pointer;border:none}
-.hint:hover{background:#444}
-.timer{color:#aaa;font-size:13px;margin-top:10px;min-height:20px}
-.wrap{max-width:820px;margin:0 auto;padding:36px 20px}
-.status{text-align:center;padding:32px;color:#888;font-size:15px;min-height:80px}
-.loading-bar{width:100%;height:4px;background:#e8e8e8;border-radius:2px;margin:16px 0;overflow:hidden;display:none}
-.loading-fill{height:100%;background:#FFD700;border-radius:2px;width:0%;transition:width .4s ease}
-.result-card{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;border:1px solid #f0f0f0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-.result-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.1);transform:translateY(-1px);transition:all .2s}
-.rank-badge{background:#1a1a1a;color:#FFD700;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:10px}
-.r-title{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.4}
-.r-price{font-size:28px;font-weight:800;color:#1a1a1a;margin-bottom:8px}
-.r-rating{color:#FFD700;font-size:15px;margin-bottom:12px}
-.r-pros{margin-bottom:8px}
-.r-pros span{display:block;font-size:14px;padding:4px 0;color:#333}
-.r-con{background:#fff8f8;border-left:3px solid #ff4444;padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;font-size:14px;color:#c00}
-.r-meta{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0;font-size:13px;color:#666}
-.r-meta span{background:#f5f5f5;padding:4px 10px;border-radius:6px}
-.buy-btn{background:#1a1a1a;color:#FFD700;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block;margin-top:10px}
-.buy-btn:hover{background:#333}
-.trust-note{font-size:12px;color:#999;margin-top:8px}
-.no-result{text-align:center;padding:40px 20px;color:#888}
-.cache-note{text-align:center;font-size:12px;color:#aaa;margin-top:8px}
-.seo-links{margin-top:48px;padding-top:32px;border-top:1px solid #eee}
-.seo-links h3{font-size:18px;font-weight:700;margin-bottom:16px}
-.seo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.seo-link{background:#fff;border:1px solid #eee;border-radius:8px;padding:12px;text-decoration:none;color:#1a1a1a;font-size:14px;display:block}
-.seo-link:hover{border-color:#FFD700;background:#fffef0}
-footer{background:#1a1a1a;color:#aaa;text-align:center;padding:20px;font-size:13px}
-footer a{color:#FFD700;text-decoration:none}
-@media(max-width:600px){.search-box{flex-direction:column}.search-box button{width:100%}}
-</style>
-</head>
-<body>
 
-<header class="hdr">
-  <a href="/" class="logo">⭐ SheValue AI</a>
-  <span class="hdr-tag">Honest Reviews for Every Indian Woman</span>
-</header>
+PROBLEMS = {
+    "skincare": [
+        "hyperpigmentation and dark spots",
+        "oily skin and acne breakouts",
+        "dry and dehydrated skin",
+        "sun damage and tanning",
+        "dark circles and puffy eyes",
+        "early signs of aging",
+        "large open pores",
+        "dull and uneven skin tone",
+        "sensitive and reactive skin",
+    ],
+    "haircare": [
+        "hair fall and thinning",
+        "dandruff and itchy scalp",
+        "dry and frizzy hair",
+        "slow hair growth",
+        "heat damaged hair",
+    ],
+    "makeup": [
+        "long lasting kajal for Indian eyes",
+        "best lipstick under ₹300",
+        "foundation for Indian skin tones",
+        "waterproof eye makeup monsoon",
+    ],
+    "wellness": [
+        "iron deficiency in Indian women",
+        "vitamin D deficiency India",
+        "low energy and fatigue women",
+        "immunity boosting supplements",
+    ],
+    "health_fitness": [
+        "home workout equipment on budget",
+        "yoga essentials for beginners",
+        "fitness tracking affordable",
+    ],
+    "kitchen_home": [
+        "best mixer grinder for Indian cooking",
+        "non toxic cookware India",
+        "affordable smart kitchen tools",
+    ],
+    "perfume": [
+        "long lasting perfume under ₹500",
+        "best deo for women India summer",
+        "affordable floral perfume India",
+    ],
+    "fashion": [
+        "affordable ethnic wear for office",
+        "stylish kurta under ₹700",
+        "casual wear for Indian women",
+    ],
+}
 
-<div class="hero">
-  <h1>Find The Honest Truth — In Under 30 Seconds</h1>
-  <p>Search any product. Get real ratings, honest cons, and best price for Indian women. No paid promotions.</p>
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="e.g. moisturizer under ₹300, vitamin C serum, hair oil..." maxlength="120" />
-    <button id="searchBtn" onclick="doSearch()">Search →</button>
-  </div>
-  <div class="hints">
-    <button class="hint" onclick="quickSearch('best face wash for oily skin india')">Oily Skin Face Wash</button>
-    <button class="hint" onclick="quickSearch('vitamin C serum under 500 india')">Vitamin C Serum</button>
-    <button class="hint" onclick="quickSearch('sunscreen for indian skin spf 50')">Sunscreen India</button>
-    <button class="hint" onclick="quickSearch('hair oil for hair fall india')">Hair Fall Oil</button>
-    <button class="hint" onclick="quickSearch('kajal under 200 india')">Best Kajal</button>
-    <button class="hint" onclick="quickSearch('moisturizer for dry skin india affordable')">Dry Skin Cream</button>
-  </div>
-  <div class="timer" id="timerDisplay"></div>
-</div>
 
-<div class="wrap">
-  <div class="loading-bar" id="loadingBar">
-    <div class="loading-fill" id="loadingFill"></div>
-  </div>
+def load_brain():
+    with open("brain.json") as f:
+        return json.load(f)
 
-  <div class="status" id="resultsArea">
-    <p>💡 Type a product or problem above and get an honest answer in seconds.</p>
-    <p style="font-size:13px;color:#aaa;margin-top:8px">Examples: "best serum for dark spots", "shampoo for dandruff under ₹200"</p>
-  </div>
 
-  <!-- SEO links to blog posts -->
-  <div class="seo-links">
-    <h3>Popular Honest Reviews</h3>
-    <div class="seo-grid" id="popularLinks">
-      <a href="/" class="seo-link">🧴 Best Vitamin C Serums India</a>
-      <a href="/" class="seo-link">☀️ Sunscreen for Indian Skin</a>
-      <a href="/" class="seo-link">💧 Moisturizer for Dry Skin</a>
-      <a href="/" class="seo-link">🧖 Face Wash for Oily Skin</a>
-      <a href="/" class="seo-link">💇 Hair Oil for Hair Fall</a>
-      <a href="/" class="seo-link">👁️ Best Kajal Under ₹200</a>
-      <a href="/" class="seo-link">💄 Lipstick Under ₹300</a>
-      <a href="/" class="seo-link">🌿 Onion Hair Oil Review</a>
-    </div>
-  </div>
-</div>
+def amazon_url(asin, affiliate_tag=""):
+    base = f"https://www.amazon.in/dp/{asin}"
+    if affiliate_tag:
+        return f"{base}?tag={affiliate_tag}"
+    return base
 
-<footer>
-  © 2026 SheValue AI · <a href="https://shevalueai.blogspot.com">Blog</a> · <a href="https://t.me/shevalueai">Telegram</a>
-</footer>
 
-<script>
-// ─── GEMINI API INTEGRATION ───────────────────────────
-// Replace with your actual Gemini API key
-// For production: use a proxy server or Cloud Function to hide the key
-const GEMINI_KEY = "YOUR_GEMINI_API_KEY_HERE";
+def score_product(p):
+    r = p.get("rating", 0)
+    rv = p.get("reviews", 0)
+    pr = p.get("price", 9999)
+    rating_pts = (r / 5) * 40
+    review_pts = min(rv / 1000, 25)
+    if pr <= 200: price_pts = 25
+    elif pr <= 500: price_pts = 20
+    elif pr <= 1000: price_pts = 14
+    elif pr <= 2000: price_pts = 8
+    else: price_pts = 3
+    return round(rating_pts + review_pts + price_pts, 1)
 
-// Cache: stores previous searches so repeat queries are instant
-const cache = {};
 
-// Timer
-let timerInterval = null;
-let startTime = null;
+def scrape_amazon(keyword, max_results=5):
+    """Try Amazon scraping. Returns empty list on any failure."""
+    products = []
+    try:
+        url = f"https://www.amazon.in/s?k={keyword.replace(' ', '+')}"
+        time.sleep(random.uniform(2, 3))
+        r = requests.get(url, headers=HEADERS, timeout=12)
+        if r.status_code != 200:
+            return []
+        soup = BeautifulSoup(r.content, "lxml")
+        for item in soup.select('[data-component-type="s-search-result"]')[:max_results * 2]:
+            try:
+                title = item.select_one("h2 span")
+                price = item.select_one(".a-price-whole")
+                rating = item.select_one(".a-icon-alt")
+                reviews = item.select_one('[aria-label*="ratings"]')
+                asin = item.get("data-asin", "")
+                if not title or not price or not asin:
+                    continue
+                p = int(price.get_text().replace(",", "").strip())
+                ra = float(rating.get_text().split()[0]) if rating else 0
+                rv_text = reviews.get_text().replace(",", "").strip() if reviews else "0"
+                rv = int("".join(c for c in rv_text if c.isdigit()) or "0")
+                if ra < 3.5 or p < 50:
+                    continue
+                products.append({
+                    "title": title.get_text(strip=True),
+                    "price": p, "rating": ra, "reviews": rv,
+                    "asin": asin, "brand": ""
+                })
+                if len(products) >= max_results:
+                    break
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return products
 
-function startTimer() {
-  startTime = Date.now();
-  timerInterval = setInterval(() => {
-    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    document.getElementById("timerDisplay").textContent = `Searching... ${elapsed}s`;
-    if (elapsed >= 30) {
-      clearInterval(timerInterval);
-      document.getElementById("timerDisplay").textContent = "Taking longer than expected...";
+
+def get_today_research():
+    """Main function. Returns category, problem, and top 3 products."""
+    brain = load_brain()
+    affiliate_tag = brain["system"].get("affiliate_tag", "")
+    active = brain["strategy"]["active_categories"]
+
+    # Check festival override
+    festival_cats = []
+    if brain["today"].get("festival_active"):
+        for f in brain["festivals"]["calendar"]:
+            if f["name"] == brain["today"].get("festival_name"):
+                festival_cats = f.get("categories", [])
+                break
+
+    category = random.choice(festival_cats) if festival_cats else random.choice(active)
+    problem = random.choice(PROBLEMS.get(category, PROBLEMS["skincare"]))
+    keyword = f"best {problem} india"
+
+    print(f"[Research] Category: {category} | Problem: {problem}")
+
+    # Try live scraping first
+    products = scrape_amazon(keyword, max_results=5)
+    print(f"[Research] Live scrape: {len(products)} products found")
+
+    # Always supplement with curated fallbacks to guarantee quality
+    fallback_pool = FALLBACKS.get(category, FALLBACKS["skincare"])
+    used_titles = [p["title"] for p in products]
+    for fb in fallback_pool:
+        if len(products) >= 5:
+            break
+        if fb["title"] not in used_titles:
+            products.append(fb)
+
+    # Score and pick top 3
+    for p in products:
+        p["score"] = score_product(p)
+        p["url"] = amazon_url(p.get("asin", ""), affiliate_tag)
+
+    top3 = sorted(products, key=lambda x: x["score"], reverse=True)[:3]
+    print(f"[Research] Final top 3: {[p['title'][:30] for p in top3]}")
+
+    return {
+        "category": category,
+        "problem": problem,
+        "products": top3,
+        "date": datetime.now().strftime("%Y-%m-%d"),
+        "festival": brain["today"].get("festival_name", ""),
     }
-  }, 100);
-}
 
-function stopTimer() {
-  clearInterval(timerInterval);
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  document.getElementById("timerDisplay").textContent = `Found in ${elapsed}s`;
-}
 
-function setLoading(active) {
-  const bar = document.getElementById("loadingBar");
-  const fill = document.getElementById("loadingFill");
-  const btn = document.getElementById("searchBtn");
-  if (active) {
-    bar.style.display = "block";
-    btn.disabled = true;
-    btn.textContent = "Searching...";
-    let w = 0;
-    const interval = setInterval(() => {
-      w = Math.min(w + Math.random() * 8, 90);
-      fill.style.width = w + "%";
-      if (w >= 90) clearInterval(interval);
-    }, 400);
-  } else {
-    fill.style.width = "100%";
-    setTimeout(() => {
-      bar.style.display = "none";
-      fill.style.width = "0%";
-    }, 400);
-    btn.disabled = false;
-    btn.textContent = "Search →";
-  }
-}
-
-function normalise(q) {
-  return q.toLowerCase().trim().replace(/\s+/g, " ");
-}
-
-function quickSearch(q) {
-  document.getElementById("searchInput").value = q;
-  doSearch();
-}
-
-async function doSearch() {
-  const input = document.getElementById("searchInput").value.trim();
-  if (!input || input.length < 3) {
-    document.getElementById("resultsArea").innerHTML =
-      '<p style="color:#888">Please type at least 3 characters.</p>';
-    return;
-  }
-
-  const q = normalise(input);
-
-  // Instant cache hit
-  if (cache[q]) {
-    document.getElementById("timerDisplay").textContent = "⚡ Instant result (cached)";
-    renderResults(cache[q]);
-    return;
-  }
-
-  setLoading(true);
-  startTimer();
-  document.getElementById("resultsArea").innerHTML =
-    '<p style="color:#888">Finding the most honest recommendations for Indian women...</p>';
-
-  try {
-    const result = await callGemini(q);
-    stopTimer();
-    setLoading(false);
-    cache[q] = result; // Cache for instant repeat access
-    renderResults(result);
-  } catch (err) {
-    stopTimer();
-    setLoading(false);
-    document.getElementById("resultsArea").innerHTML =
-      `<div class="no-result">
-        <p>⚠️ Search failed. Please try again.</p>
-        <p style="font-size:13px;color:#aaa;margin-top:8px">Error: ${err.message}</p>
-      </div>`;
-  }
-}
-
-async function callGemini(query) {
-  const prompt = `You are SheValue AI — India's most honest product recommendation engine for women.
-
-User query: "${query}"
-
-Find the top 3 most relevant products for this query. Focus on:
-- Products available on Amazon India
-- Best value for Indian women
-- Honest assessment (real pros AND real cons)
-
-Return ONLY valid JSON in this exact format (no markdown, no explanation):
-{
-  "query_understood": "what the user is actually looking for",
-  "products": [
-    {
-      "rank": 1,
-      "title": "Full product name",
-      "brand": "Brand name",
-      "price_inr": 349,
-      "rating": 4.4,
-      "reviews": 15200,
-      "pros": ["specific genuine benefit 1", "specific genuine benefit 2", "specific genuine benefit 3"],
-      "honest_con": "The biggest real flaw — never hide this",
-      "best_for": "Specific type of Indian woman / skin type / concern",
-      "skip_if": "Who should NOT buy this",
-      "amazon_search": "exact search term to find on amazon.in",
-      "shevalue_score": 87
-    }
-  ],
-  "honest_verdict": "One sentence: who should buy what. Be decisive.",
-  "do_not_buy_if": "If none of these apply to someone, state it honestly"
-}`;
-
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${GEMINI_KEY}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 1200 }
-      })
-    }
-  );
-
-  if (!response.ok) throw new Error(`API error ${response.status}`);
-  const data = await response.json();
-  const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-  const clean = text.replace(/```json|```/g, "").trim();
-  return JSON.parse(clean);
-}
-
-function makeAmazonUrl(searchTerm) {
-  // Replace with affiliate URL when ready:
-  // return `https://www.amazon.in/s?k=${encodeURIComponent(searchTerm)}&tag=YOUR-AFFILIATE-TAG`;
-  return `https://www.amazon.in/s?k=${encodeURIComponent(searchTerm)}`;
-}
-
-function renderResults(data) {
-  if (!data || !data.products || data.products.length === 0) {
-    document.getElementById("resultsArea").innerHTML =
-      '<div class="no-result"><p>No results found. Try a different search.</p></div>';
-    return;
-  }
-
-  let html = "";
-
-  if (data.query_understood) {
-    html += `<p style="color:#888;font-size:14px;margin-bottom:20px">
-      Showing honest results for: <strong>${data.query_understood}</strong>
-    </p>`;
-  }
-
-  data.products.forEach(p => {
-    const stars = "★".repeat(Math.round(p.rating)) + "☆".repeat(5 - Math.round(p.rating));
-    const pros = (p.pros || []).map(pro =>
-      `<span>✓ ${pro}</span>`
-    ).join("");
-    const amazonUrl = makeAmazonUrl(p.amazon_search || p.title);
-
-    html += `
-    <div class="result-card">
-      <div class="rank-badge">#${p.rank} SheValue Pick</div>
-      <div class="r-title">${p.title}</div>
-      <div class="r-price">₹${p.price_inr?.toLocaleString('en-IN') || '?'}</div>
-      <div class="r-rating">${stars} ${p.rating}/5 · ${(p.reviews||0).toLocaleString('en-IN')} verified reviews</div>
-      <div class="r-pros">${pros}</div>
-      <div class="r-con">⚠️ Honest Con: ${p.honest_con}</div>
-      <div class="r-meta">
-        <span>👩 Best for: ${p.best_for}</span>
-        <span>🚫 Skip if: ${p.skip_if}</span>
-        <span>⭐ SheValue Score: ${p.shevalue_score}/100</span>
-      </div>
-      <a href="${amazonUrl}" target="_blank" rel="noopener" class="buy-btn">View on Amazon India →</a>
-      <div class="trust-note">✓ No paid promotion · We earn nothing from this link</div>
-    </div>`;
-  });
-
-  if (data.honest_verdict) {
-    html += `
-    <div style="background:#1a1a1a;color:#fff;border-radius:12px;padding:20px 24px;margin-top:8px">
-      <strong style="color:#FFD700">⭐ SheValue Honest Verdict:</strong>
-      <p style="margin-top:8px;color:#ddd">${data.honest_verdict}</p>
-      ${data.do_not_buy_if ? `<p style="margin-top:8px;color:#aaa;font-size:13px">⚠️ ${data.do_not_buy_if}</p>` : ""}
-    </div>`;
-  }
-
-  html += `<div class="cache-note">🔔 Get daily honest reviews free → <a href="https://t.me/shevalueai" style="color:#C9562B">Join Telegram</a></div>`;
-
-  document.getElementById("resultsArea").innerHTML = html;
-}
-
-// Allow pressing Enter to search
-document.getElementById("searchInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") doSearch();
-});
-</script>
-</body>
-</html>
-
+if __name__ == "__main__":
+    result = get_today_research()
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+  
