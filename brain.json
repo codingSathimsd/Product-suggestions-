@@ -10,7 +10,6 @@
     "telegram_channel": "@shevalueai",
     "instagram_handle": "@shevalueai"
   },
-
   "today": {
     "category": "skincare",
     "problem": "",
@@ -18,20 +17,32 @@
     "slug": "",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
-    "festival_active": false,
-    "festival_name": ""
+    "festival_active": true,
+    "festival_name": "Baisakhi"
   },
-
   "strategy": {
-    "active_categories": ["skincare"],
+    "active_categories": [
+      "skincare"
+    ],
     "all_categories": [
-      "skincare", "haircare", "makeup", "wellness",
-      "health_fitness", "fashion", "kitchen_home", "perfume"
+      "skincare",
+      "haircare",
+      "makeup",
+      "wellness",
+      "health_fitness",
+      "fashion",
+      "kitchen_home",
+      "perfume"
     ],
     "category_posts_count": {
-      "skincare": 0, "haircare": 0, "makeup": 0,
-      "wellness": 0, "health_fitness": 0, "fashion": 0,
-      "kitchen_home": 0, "perfume": 0
+      "skincare": 0,
+      "haircare": 0,
+      "makeup": 0,
+      "wellness": 0,
+      "health_fitness": 0,
+      "fashion": 0,
+      "kitchen_home": 0,
+      "perfume": 0
     },
     "expand_after_posts": 20,
     "psychology_rotation": [
@@ -43,48 +54,264 @@
       "micro_commitment"
     ],
     "psychology_index": 0,
-    "design_rotation": ["minimal_bold", "warm_editorial", "data_card"],
+    "design_rotation": [
+      "minimal_bold",
+      "warm_editorial",
+      "data_card"
+    ],
     "design_index": 0,
     "hook_words": [
-      "actually works", "honest review", "before you buy",
-      "under \u20b9300", "dermatologist tested", "real results",
-      "indian skin tested", "tried and tested", "worth it or not",
+      "actually works",
+      "honest review",
+      "before you buy",
+      "under ₹300",
+      "dermatologist tested",
+      "real results",
+      "indian skin tested",
+      "tried and tested",
+      "worth it or not",
       "what no one tells you"
     ]
   },
-
   "festivals": {
     "check_days_ahead": 14,
-    "upcoming": [],
+    "upcoming": [
+      {
+        "name": "Baisakhi",
+        "month": 4,
+        "day": 13,
+        "religion": "Sikh",
+        "categories": [
+          "skincare",
+          "fashion"
+        ],
+        "theme": "mustard",
+        "colors": [
+          "#FFD700",
+          "#FF8C00"
+        ],
+        "days_until": 10
+      }
+    ],
     "calendar": [
-      {"name": "Makar Sankranti", "month": 1, "day": 14, "religion": "Hindu", "categories": ["skincare", "haircare"], "theme": "warm_saffron", "colors": ["#FF8C00", "#FFD700"]},
-      {"name": "Holi", "month": 3, "day": 14, "religion": "Hindu", "categories": ["skincare", "haircare"], "theme": "vibrant", "colors": ["#FF6B6B", "#FFD93D", "#6BCB77"]},
-      {"name": "Eid ul-Fitr", "month": 4, "day": 1, "religion": "Muslim", "categories": ["perfume", "skincare", "makeup"], "theme": "green_gold", "colors": ["#006400", "#FFD700"]},
-      {"name": "Baisakhi", "month": 4, "day": 13, "religion": "Sikh", "categories": ["skincare", "fashion"], "theme": "mustard", "colors": ["#FFD700", "#FF8C00"]},
-      {"name": "Raksha Bandhan", "month": 8, "day": 9, "religion": "Hindu", "categories": ["skincare", "makeup", "perfume"], "theme": "pastel", "colors": ["#FFB6C1", "#FFD700"]},
-      {"name": "Onam", "month": 8, "day": 29, "religion": "Hindu", "categories": ["haircare", "skincare"], "theme": "kerala_green", "colors": ["#228B22", "#FFD700"]},
-      {"name": "Ganesh Chaturthi", "month": 8, "day": 27, "religion": "Hindu", "categories": ["makeup", "skincare"], "theme": "orange", "colors": ["#FF8C00", "#FFD700"]},
-      {"name": "Navratri", "month": 10, "day": 2, "religion": "Hindu", "categories": ["makeup", "fashion"], "theme": "navratri", "colors": ["#FF0000", "#FFD700"]},
-      {"name": "Durga Puja", "month": 10, "day": 2, "religion": "Hindu", "categories": ["makeup", "skincare"], "theme": "red_gold", "colors": ["#8B0000", "#FFD700"]},
-      {"name": "Karva Chauth", "month": 10, "day": 20, "religion": "Hindu", "categories": ["skincare", "makeup"], "theme": "bridal_red", "colors": ["#8B0000", "#FFD700"]},
-      {"name": "Diwali", "month": 10, "day": 28, "religion": "Hindu", "categories": ["skincare", "makeup", "perfume", "haircare"], "theme": "diwali_gold", "colors": ["#FFD700", "#FF8C00", "#8B0000"]},
-      {"name": "Christmas", "month": 12, "day": 25, "religion": "Christian", "categories": ["skincare", "perfume"], "theme": "christmas", "colors": ["#006400", "#FF0000", "#FFD700"]},
-      {"name": "New Year", "month": 12, "day": 31, "religion": "All", "categories": ["skincare", "makeup", "wellness"], "theme": "glitter", "colors": ["#1a1a1a", "#FFD700"]}
+      {
+        "name": "Makar Sankranti",
+        "month": 1,
+        "day": 14,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "haircare"
+        ],
+        "theme": "warm_saffron",
+        "colors": [
+          "#FF8C00",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Holi",
+        "month": 3,
+        "day": 14,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "haircare"
+        ],
+        "theme": "vibrant",
+        "colors": [
+          "#FF6B6B",
+          "#FFD93D",
+          "#6BCB77"
+        ]
+      },
+      {
+        "name": "Eid ul-Fitr",
+        "month": 4,
+        "day": 1,
+        "religion": "Muslim",
+        "categories": [
+          "perfume",
+          "skincare",
+          "makeup"
+        ],
+        "theme": "green_gold",
+        "colors": [
+          "#006400",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Baisakhi",
+        "month": 4,
+        "day": 13,
+        "religion": "Sikh",
+        "categories": [
+          "skincare",
+          "fashion"
+        ],
+        "theme": "mustard",
+        "colors": [
+          "#FFD700",
+          "#FF8C00"
+        ]
+      },
+      {
+        "name": "Raksha Bandhan",
+        "month": 8,
+        "day": 9,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup",
+          "perfume"
+        ],
+        "theme": "pastel",
+        "colors": [
+          "#FFB6C1",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Onam",
+        "month": 8,
+        "day": 29,
+        "religion": "Hindu",
+        "categories": [
+          "haircare",
+          "skincare"
+        ],
+        "theme": "kerala_green",
+        "colors": [
+          "#228B22",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Ganesh Chaturthi",
+        "month": 8,
+        "day": 27,
+        "religion": "Hindu",
+        "categories": [
+          "makeup",
+          "skincare"
+        ],
+        "theme": "orange",
+        "colors": [
+          "#FF8C00",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Navratri",
+        "month": 10,
+        "day": 2,
+        "religion": "Hindu",
+        "categories": [
+          "makeup",
+          "fashion"
+        ],
+        "theme": "navratri",
+        "colors": [
+          "#FF0000",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Durga Puja",
+        "month": 10,
+        "day": 2,
+        "religion": "Hindu",
+        "categories": [
+          "makeup",
+          "skincare"
+        ],
+        "theme": "red_gold",
+        "colors": [
+          "#8B0000",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Karva Chauth",
+        "month": 10,
+        "day": 20,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup"
+        ],
+        "theme": "bridal_red",
+        "colors": [
+          "#8B0000",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "Diwali",
+        "month": 10,
+        "day": 28,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup",
+          "perfume",
+          "haircare"
+        ],
+        "theme": "diwali_gold",
+        "colors": [
+          "#FFD700",
+          "#FF8C00",
+          "#8B0000"
+        ]
+      },
+      {
+        "name": "Christmas",
+        "month": 12,
+        "day": 25,
+        "religion": "Christian",
+        "categories": [
+          "skincare",
+          "perfume"
+        ],
+        "theme": "christmas",
+        "colors": [
+          "#006400",
+          "#FF0000",
+          "#FFD700"
+        ]
+      },
+      {
+        "name": "New Year",
+        "month": 12,
+        "day": 31,
+        "religion": "All",
+        "categories": [
+          "skincare",
+          "makeup",
+          "wellness"
+        ],
+        "theme": "glitter",
+        "colors": [
+          "#1a1a1a",
+          "#FFD700"
+        ]
+      }
     ]
   },
-
   "seo": {
     "site_name": "SheValue AI",
     "site_description": "India's most honest product reviews for women. Real pros and cons. Best price. No paid promotions.",
     "focus_keywords": [
-      "honest review india", "best products for women india",
-      "affordable skincare india", "product review indian skin",
+      "honest review india",
+      "best products for women india",
+      "affordable skincare india",
+      "product review indian skin",
       "best buy india women"
     ],
     "schema_org": true,
     "open_graph": true
   },
-
   "performance": {
     "total_posts": 0,
     "days_running": 0,
@@ -92,6 +319,6 @@
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": []
-  }
+  },
+  "last_updated": "2026-04-03T09:37:03.630721"
 }
-
