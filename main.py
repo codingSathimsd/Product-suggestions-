@@ -1,5 +1,5 @@
 """
-main.py — SheValue AI v2
+main.py - SheValue AI v2
 Master controller. Simple. Clear. Easy to debug.
 Usage: python main.py [morning | evening]
 """
@@ -43,8 +43,8 @@ def check_keys():
 def run_morning():
     """Full daily pipeline: research → write → design → publish."""
     print("=" * 55)
-    print(f"  SheValue AI — Morning Pipeline")
-    print(f"  {datetime.now().strftime('%A, %d %B %Y — %I:%M %p IST')}")
+    print(f"  SheValue AI - Morning Pipeline")
+    print(f"  {datetime.now().strftime('%A, %d %B %Y - %I:%M %p IST')}")
     print("=" * 55)
 
     check_keys()
@@ -104,4 +104,4 @@ if __name__ == "__main__":
     else:
         print("Usage: python main.py [morning | evening]")
         sys.exit(1)
-  
+        
