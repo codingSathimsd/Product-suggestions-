@@ -1,1 +1,52 @@
+name: Morning Pipeline — SheValue AI
 
+on:
+  schedule:
+    - cron: '30 2 * * *'   # 2:30 AM UTC = 8:00 AM IST
+  workflow_dispatch:         # Manual trigger anytime
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          sudo apt-get install -y fonts-dejavu-core
+
+      - name: Run morning pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          BLOGGER_API_KEY: ${{ secrets.BLOGGER_API_KEY }}
+          BLOGGER_BLOG_ID: ${{ secrets.BLOGGER_BLOG_ID }}
+        run: python main.py morning
+
+      - name: Push all outputs
+        run: |
+          git config user.name "SheValue Bot"
+          git config user.email "bot@shevalueai.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Daily post $(date +'%Y-%m-%d') [auto]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
