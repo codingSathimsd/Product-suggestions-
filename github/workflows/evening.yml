@@ -1,1 +1,37 @@
+name: Evening Learning — SheValue AI
 
+on:
+  schedule:
+    - cron: '30 15 * * *'   # 3:30 PM UTC = 9:00 PM IST
+  workflow_dispatch:
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run evening learning
+        run: python main.py evening
+
+      - name: Push updated brain
+        run: |
+          git config user.name "SheValue Bot"
+          git config user.email "bot@shevalueai.com"
+          git add brain.json
+          git diff --staged --quiet || git commit -m "Evening learning $(date +'%Y-%m-%d') [auto]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
