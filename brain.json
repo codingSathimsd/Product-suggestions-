@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Stylish Kurta Under ₹700 - Tested for Indian Women",
-    "slug": "2026-04-03-3-honest-products-for-stylish-kurta-under-700---tested-",
+    "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
+    "slug": "2026-04-03-3-honest-products-for-oily-skin-and-acne-breakouts---te",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
@@ -53,13 +53,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 1,
+    "psychology_index": 2,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 1,
+    "design_index": 2,
     "hook_words": [
       "actually works",
       "honest review",
@@ -313,12 +313,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 1,
+    "total_posts": 2,
     "days_running": 1,
     "best_post": "",
     "best_category": "fashion",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-03",
+        "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-03",
         "headline": "3 Honest Products for Stylish Kurta Under ₹700 - Tested for Indian Women",
@@ -330,5 +339,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-03T17:06:31.817516"
+  "last_updated": "2026-04-03T18:56:12.983476"
 }
