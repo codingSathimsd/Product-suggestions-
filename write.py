@@ -1,5 +1,5 @@
 """
-write.py — SheValue AI v2
+write.py - SheValue AI v2
 ONE JOB: Write an honest, SEO-optimised review using Gemini.
 Generates: Blog HTML + Instagram caption + Telegram message.
 """
@@ -56,7 +56,7 @@ Price: ₹{p['price']} | Rating: {p['rating']}/5 | Reviews: {p.get('reviews', 'N
 Buy Link: {url}
 """
 
-    return f"""You are SheValue AI — India's most trusted honest product platform for women.
+    return f"""You are SheValue AI - India's most trusted honest product platform for women.
 Personality: Warm, direct older sister. Never salesy. Never fake.
 Language: Pure English. Indian context (₹ prices, Indian skin types, Indian climate).
 
@@ -83,12 +83,12 @@ Example format: "3 Honest [Category] Products Under ₹[price] That Actually Wor
 
 ---REVIEW---
 For each product write:
-## Product [N]: [Full product name] — ₹[price]
+## Product [N]: [Full product name] - ₹[price]
 ★ [rating]/5 based on [reviews] real Amazon India reviews
 ✓ PRO 1: [specific genuine benefit]
 ✓ PRO 2: [specific genuine benefit]  
 ✓ PRO 3: [specific genuine benefit]
-✗ HONEST CON: [real flaw — never hide this]
+✗ HONEST CON: [real flaw - never hide this]
 💰 Value: [Poor/Fair/Good/Excellent] for the price
 👩 Best for: [specific skin type or concern]
 🚫 Skip if: [exact who should not buy]
@@ -129,7 +129,7 @@ def extract_headline(text):
     """Pull headline from article."""
     lines = text.strip().split("\n")
     for line in lines[:8]:
-        line = line.strip().lstrip("#-—").strip()
+        line = line.strip().lstrip("#--").strip()
         if 10 < len(line) < 120 and "headline" not in line.lower():
             return line
     return f"Honest Review: Best Products for {datetime.now().strftime('%B %Y')}"
@@ -286,13 +286,13 @@ def build_telegram(headline, research, products):
     today = datetime.now().strftime("%d %B %Y")
     top = products[0]
     lines = [
-        f"⭐ *SheValue AI — {today}*",
+        f"⭐ *SheValue AI - {today}*",
         "",
         f"*{headline}*",
         "",
-        "——————————————",
+        "--------------",
         f"🔍 *Today's problem solved:* {research['problem'].title()}",
-        "——————————————",
+        "--------------",
         "",
         f"🏆 *#1 Honest Pick:*",
         f"📦 {top['title']}",
@@ -300,10 +300,10 @@ def build_telegram(headline, research, products):
         f"★ {top['rating']}/5 · {top.get('reviews','?')} reviews",
         f"🛒 {top.get('url','https://www.amazon.in')}",
         "",
-        "——————————————",
+        "--------------",
         "📖 *Full honest review (all 3 + who NOT to buy for):*",
         "👉 https://shevalueai.blogspot.com",
-        "——————————————",
+        "--------------",
         "",
         "💬 Questions? Reply here.",
         "🔔 Share with a friend who needs this today 🙏",
@@ -316,7 +316,7 @@ def build_instagram_caption(headline, research, products, brain):
     psych_idx = brain["strategy"]["psychology_index"]
     psych_key = brain["strategy"]["psychology_rotation"][psych_idx]
     hooks = {
-        "honest_con_trick": f"I'll be honest — {top['title']} has one real flaw. But here's why {top.get('reviews','10,000+')} women still love it 👇",
+        "honest_con_trick": f"I'll be honest - {top['title']} has one real flaw. But here's why {top.get('reviews','10,000+')} women still love it 👇",
         "problem_first_hook": f"Struggling with {research['problem']}? You are not alone. Here is what actually works 👇",
         "social_proof": f"{top.get('reviews','10,000+')} women on Amazon India rated this {top['rating']}★. Here is the honest truth 👇",
         "price_anchoring": f"You do not need to spend ₹2,000 to fix {research['problem']}. This ₹{top['price']} option delivers 👇",
@@ -337,9 +337,9 @@ def build_instagram_caption(headline, research, products, brain):
 
 Full honest review + all 3 options + who should NOT buy → Link in bio
 
-——
+--
 {tags}
-——
+--
 🔔 Follow @shevalueai for daily honest reviews."""
 
 
@@ -353,7 +353,7 @@ def write_today(research):
     try:
         article_text = call_gemini(prompt)
     except Exception as e:
-        print(f"[Write] Gemini failed ({e}) — using fallback template")
+        print(f"[Write] Gemini failed ({e}) - using fallback template")
         article_text = fallback_article(research)
 
     headline = extract_headline(article_text)
@@ -391,11 +391,11 @@ def write_today(research):
 
 def fallback_article(research):
     top = research["products"][0] if research["products"] else {}
-    return f"""# 3 Honest Products for {research['problem'].title()} — Tested for Indian Women
+    return f"""# 3 Honest Products for {research['problem'].title()} - Tested for Indian Women
 
 Struggling with {research['problem']}? We researched the top-rated options on Amazon India.
 
-## Product 1: {top.get('title','Top Pick')} — ₹{top.get('price','?')}
+## Product 1: {top.get('title','Top Pick')} - ₹{top.get('price','?')}
 ★ {top.get('rating','4.0')}/5 based on {top.get('reviews','?')} reviews
 ✓ PRO 1: Well rated by Indian women
 ✓ PRO 2: Available on Amazon India
@@ -403,7 +403,7 @@ Struggling with {research['problem']}? We researched the top-rated options on Am
 ✗ HONEST CON: Results require consistent use
 💰 Value: Good
 👩 Best for: Women dealing with {research['problem']}
-🚫 Skip if: Your concern is severe — see a dermatologist first
+🚫 Skip if: Your concern is severe - see a dermatologist first
 🛒 Buy here: {top.get('url','https://www.amazon.in')}
 
 ## SheValue Verdict
@@ -425,4 +425,4 @@ if __name__ == "__main__":
     }
     result = write_today(sample)
     print(f"Headline: {result['headline']}")
-  
+    
