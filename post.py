@@ -1,12 +1,12 @@
 """
-post.py — SheValue AI v2
+post.py - SheValue AI v2
 ONE JOB: Publish content to Blogger + Telegram.
 All free. All automatic.
 
 Blogger:  Uses Blogger API v3 (free, Google account).
 Telegram: Bot API (free, instant).
 
-Instagram: Coming later — will be added when ready.
+Instagram: Coming later - will be added when ready.
 """
 
 import json, os
@@ -42,7 +42,7 @@ def post_to_blogger(html_content, headline, research):
     blog_id = os.environ.get("BLOGGER_BLOG_ID", "")
 
     if not api_key or not blog_id:
-        print("[Post] Blogger credentials missing — saving to docs/ as fallback")
+        print("[Post] Blogger credentials missing - saving to docs/ as fallback")
         return post_to_github_pages(html_content, headline, research)
 
     category = research["category"].replace("_", " ").title()
@@ -123,8 +123,8 @@ def update_index(slug, headline):
 <html lang="en-IN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="SheValue AI — India's most honest product reviews for women. Daily reviews. No paid promotions.">
-<title>SheValue AI — Honest Product Reviews for Indian Women</title>
+<meta name="description" content="SheValue AI - India's most honest product reviews for women. Daily reviews. No paid promotions.">
+<title>SheValue AI - Honest Product Reviews for Indian Women</title>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{font-family:'Segoe UI',Arial,sans-serif;background:#fafafa;color:#1a1a1a}}
@@ -206,7 +206,7 @@ def post_to_telegram(message, image_path=None):
     channel = os.environ.get("TELEGRAM_CHANNEL_ID", "")
 
     if not token or not channel:
-        print("[Post] Telegram credentials missing — skipping")
+        print("[Post] Telegram credentials missing - skipping")
         return False
 
     try:
@@ -282,7 +282,7 @@ def publish_all(write_result, image_path, research):
     save_brain(brain)
 
     success = [k for k, v in results.items() if v]
-    print(f"[Post] Published to: {', '.join(success) if success else 'none — check credentials'}")
+    print(f"[Post] Published to: {', '.join(success) if success else 'none - check credentials'}")
     return results
 
 
@@ -292,4 +292,4 @@ if __name__ == "__main__":
     print(f"Blogger Blog ID:  {'✓ Set' if os.environ.get('BLOGGER_BLOG_ID') else '✗ Missing'}")
     print(f"Telegram token:   {'✓ Set' if os.environ.get('TELEGRAM_BOT_TOKEN') else '✗ Missing'}")
     print(f"Telegram channel: {'✓ Set' if os.environ.get('TELEGRAM_CHANNEL_ID') else '✗ Missing'}")
-          
+    
