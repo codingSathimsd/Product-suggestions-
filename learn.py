@@ -1,5 +1,5 @@
 """
-learn.py — SheValue AI v2
+learn.py - SheValue AI v2
 ONE JOB: Learn from today. Improve tomorrow.
 Runs every evening at 9PM IST via GitHub Actions.
 """
@@ -99,16 +99,16 @@ def self_improve(brain):
 
     # Rule 1: After 7 posts, increase category diversity
     if total == 7:
-        print("[Learn] 7 posts milestone — checking category expansion")
+        print("[Learn] 7 posts milestone - checking category expansion")
 
     # Rule 2: After 30 posts, add affiliate link placeholder note
     if total == 30:
-        print("[Learn] 30 posts milestone — system is ready for affiliate links when you join Amazon Associates")
+        print("[Learn] 30 posts milestone - system is ready for affiliate links when you join Amazon Associates")
         brain["system"]["affiliate_ready"] = True
 
     # Rule 3: After 90 posts, system is deeply trained
     if total == 90:
-        print("[Learn] 90 posts milestone — system is fully optimised for Indian women's market")
+        print("[Learn] 90 posts milestone - system is fully optimised for Indian women's market")
         brain["system"]["fully_trained"] = True
 
     # Rule 4: Rotate psychology and design (already handled in write.py and design.py)
@@ -121,7 +121,7 @@ def self_improve(brain):
 
 
 def run_evening_learning():
-    print(f"\n[Learn] SheValue AI — Evening Learning Cycle")
+    print(f"\n[Learn] SheValue AI - Evening Learning Cycle")
     print(f"[Learn] {datetime.now().strftime('%d %B %Y %I:%M %p IST')}")
 
     brain = load_brain()
@@ -147,4 +147,4 @@ def run_evening_learning():
 
 if __name__ == "__main__":
     run_evening_learning()
-
+    
