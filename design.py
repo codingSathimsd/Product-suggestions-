@@ -1,7 +1,7 @@
 """
-design.py — SheValue AI v2
+design.py - SheValue AI v2
 ONE JOB: Generate a professional Instagram post image (1080x1080).
-Uses only Pillow — free. No external design services.
+Uses only Pillow - free. No external design services.
 """
 
 import json, os
@@ -204,4 +204,4 @@ if __name__ == "__main__":
         "products": [{"title": "Minimalist 10% Vitamin C Serum", "price": 349, "rating": 4.4, "reviews": 15200}],
     }
     print(generate_image(sample))
-      
+    
