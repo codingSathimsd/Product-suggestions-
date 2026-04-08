@@ -90,7 +90,7 @@
           "#FFD700",
           "#FF8C00"
         ],
-        "days_until": 6
+        "days_until": 5
       }
     ],
     "calendar": [
@@ -314,7 +314,7 @@
   },
   "performance": {
     "total_posts": 7,
-    "days_running": 6,
+    "days_running": 7,
     "best_post": "",
     "best_category": "fashion",
     "best_psychology": "honest_con_trick",
@@ -384,5 +384,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-08T07:01:58.710551"
+  "last_updated": "2026-04-08T19:48:33.947955"
 }
