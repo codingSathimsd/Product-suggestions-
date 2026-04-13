@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
-    "slug": "2026-04-12-3-honest-products-for-early-signs-of-aging---tested-for",
+    "headline": "3 Honest Products for Dull And Uneven Skin Tone - Tested for Indian Women",
+    "slug": "2026-04-13-3-honest-products-for-dull-and-uneven-skin-tone---teste",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
@@ -53,13 +53,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 5,
+    "psychology_index": 0,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 2,
+    "design_index": 0,
     "hook_words": [
       "actually works",
       "honest review",
@@ -313,12 +313,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 11,
+    "total_posts": 12,
     "days_running": 11,
     "best_post": "",
     "best_category": "fashion",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-13",
+        "headline": "3 Honest Products for Dull And Uneven Skin Tone - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-12",
         "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
@@ -420,5 +429,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-12T17:08:22.844748"
+  "last_updated": "2026-04-13T09:19:48.661948"
 }
