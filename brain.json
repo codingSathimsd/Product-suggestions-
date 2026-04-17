@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
-    "slug": "2026-04-16-3-honest-products-for-oily-skin-and-acne-breakouts---te",
+    "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
+    "slug": "2026-04-17-3-honest-products-for-early-signs-of-aging---tested-for",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": false,
@@ -53,13 +53,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 3,
+    "psychology_index": 4,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 0,
+    "design_index": 1,
     "hook_words": [
       "actually works",
       "honest review",
@@ -296,12 +296,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 15,
+    "total_posts": 16,
     "days_running": 15,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-17",
+        "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-16",
         "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
@@ -439,5 +448,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-16T19:47:37.915309"
+  "last_updated": "2026-04-17T08:15:50.839740"
 }
