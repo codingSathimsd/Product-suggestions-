@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
-    "slug": "2026-04-18-3-honest-products-for-early-signs-of-aging---tested-for",
+    "headline": "3 Honest Products for Dark Circles And Puffy Eyes - Tested for Indian Women",
+    "slug": "2026-04-19-3-honest-products-for-dark-circles-and-puffy-eyes---tes",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": false,
@@ -53,13 +53,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 5,
+    "psychology_index": 0,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 2,
+    "design_index": 0,
     "hook_words": [
       "actually works",
       "honest review",
@@ -296,12 +296,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 17,
+    "total_posts": 18,
     "days_running": 17,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-19",
+        "headline": "3 Honest Products for Dark Circles And Puffy Eyes - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-18",
         "headline": "3 Honest Products for Early Signs Of Aging - Tested for Indian Women",
@@ -457,5 +466,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-18T17:24:43.339770"
+  "last_updated": "2026-04-19T07:01:43.372590"
 }
