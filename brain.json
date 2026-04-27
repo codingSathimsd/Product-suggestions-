@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Dandruff And Itchy Scalp - Tested for Indian Women",
-    "slug": "2026-04-26-3-honest-products-for-dandruff-and-itchy-scalp---tested",
+    "headline": "3 Honest Products for Sensitive And Reactive Skin - Tested for Indian Women",
+    "slug": "2026-04-27-3-honest-products-for-sensitive-and-reactive-skin---tes",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": false,
@@ -54,13 +54,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 1,
+    "psychology_index": 2,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 1,
+    "design_index": 2,
     "hook_words": [
       "actually works",
       "honest review",
@@ -297,12 +297,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 25,
+    "total_posts": 26,
     "days_running": 25,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-27",
+        "headline": "3 Honest Products for Sensitive And Reactive Skin - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-26",
         "headline": "3 Honest Products for Dandruff And Itchy Scalp - Tested for Indian Women",
@@ -530,5 +539,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-26T16:08:08.312018"
+  "last_updated": "2026-04-27T05:37:37.129799"
 }
