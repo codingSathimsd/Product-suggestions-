@@ -13,8 +13,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Sensitive And Reactive Skin - Tested for Indian Women",
-    "slug": "2026-04-27-3-honest-products-for-sensitive-and-reactive-skin---tes",
+    "headline": "3 Honest Products for Hyperpigmentation And Dark Spots - Tested for Indian Women",
+    "slug": "2026-04-28-3-honest-products-for-hyperpigmentation-and-dark-spots-",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": false,
@@ -54,13 +54,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 2,
+    "psychology_index": 3,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 2,
+    "design_index": 0,
     "hook_words": [
       "actually works",
       "honest review",
@@ -297,12 +297,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 26,
+    "total_posts": 27,
     "days_running": 26,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-04-28",
+        "headline": "3 Honest Products for Hyperpigmentation And Dark Spots - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-04-27",
         "headline": "3 Honest Products for Sensitive And Reactive Skin - Tested for Indian Women",
@@ -539,5 +548,5 @@
       }
     ]
   },
-  "last_updated": "2026-04-27T17:08:59.081127"
+  "last_updated": "2026-04-28T05:42:20.796221"
 }
