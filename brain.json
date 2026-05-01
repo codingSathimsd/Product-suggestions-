@@ -8,7 +8,8 @@
     "blogger_blog_id": "",
     "blogger_url": "https://shevalueai.blogspot.com",
     "telegram_channel": "@shevalueai",
-    "instagram_handle": "@shevalueai"
+    "instagram_handle": "@shevalueai",
+    "affiliate_ready": true
   },
   "today": {
     "category": "skincare",
@@ -298,7 +299,7 @@
   },
   "performance": {
     "total_posts": 30,
-    "days_running": 29,
+    "days_running": 30,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
@@ -575,5 +576,5 @@
       }
     ]
   },
-  "last_updated": "2026-05-01T05:51:32.244765"
+  "last_updated": "2026-05-01T16:32:52.985656"
 }
