@@ -299,7 +299,7 @@
   },
   "performance": {
     "total_posts": 37,
-    "days_running": 36,
+    "days_running": 37,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
@@ -639,5 +639,5 @@
       }
     ]
   },
-  "last_updated": "2026-05-08T05:13:36.924732"
+  "last_updated": "2026-05-08T16:52:58.354358"
 }
