@@ -24,7 +24,8 @@
   "strategy": {
     "active_categories": [
       "skincare",
-      "haircare"
+      "haircare",
+      "makeup"
     ],
     "all_categories": [
       "skincare",
@@ -299,7 +300,7 @@
   },
   "performance": {
     "total_posts": 40,
-    "days_running": 39,
+    "days_running": 40,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
@@ -666,5 +667,5 @@
       }
     ]
   },
-  "last_updated": "2026-05-11T06:10:44.848608"
+  "last_updated": "2026-05-11T17:34:30.827531"
 }
