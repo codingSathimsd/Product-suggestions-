@@ -14,8 +14,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Long Lasting Kajal For Indian Eyes - Tested for Indian Women",
-    "slug": "2026-07-13-3-honest-products-for-long-lasting-kajal-for-indian-eye",
+    "headline": "3 Honest Products for Vitamin D Deficiency India - Tested for Indian Women",
+    "slug": "2026-07-14-3-honest-products-for-vitamin-d-deficiency-india---test",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": false,
@@ -57,13 +57,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 1,
+    "psychology_index": 2,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 1,
+    "design_index": 2,
     "hook_words": [
       "actually works",
       "honest review",
@@ -300,12 +300,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 60,
+    "total_posts": 61,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-07-14",
+        "headline": "3 Honest Products for Vitamin D Deficiency India - Tested for Indian Women",
+        "category": "wellness",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-07-13",
         "headline": "3 Honest Products for Long Lasting Kajal For Indian Eyes - Tested for Indian Women",
@@ -836,17 +845,8 @@
           "blogger": true,
           "telegram": false
         }
-      },
-      {
-        "date": "2026-05-15",
-        "headline": "3 Honest Products for Dry And Dehydrated Skin - Tested for Indian Women",
-        "category": "skincare",
-        "results": {
-          "blogger": true,
-          "telegram": false
-        }
       }
     ]
   },
-  "last_updated": "2026-07-13T17:31:12.598164"
+  "last_updated": "2026-07-14T05:11:29.539880"
 }
