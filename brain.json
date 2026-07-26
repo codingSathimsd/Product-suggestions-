@@ -18,8 +18,8 @@
     "slug": "2026-07-26-3-honest-products-for-dry-and-dehydrated-skin---tested-",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
-    "festival_active": false,
-    "festival_name": ""
+    "festival_active": true,
+    "festival_name": "Raksha Bandhan"
   },
   "strategy": {
     "active_categories": [
@@ -79,7 +79,25 @@
   },
   "festivals": {
     "check_days_ahead": 14,
-    "upcoming": [],
+    "upcoming": [
+      {
+        "name": "Raksha Bandhan",
+        "month": 8,
+        "day": 9,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup",
+          "perfume"
+        ],
+        "theme": "pastel",
+        "colors": [
+          "#FFB6C1",
+          "#FFD700"
+        ],
+        "days_until": 14
+      }
+    ],
     "calendar": [
       {
         "name": "Makar Sankranti",
@@ -300,7 +318,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -848,5 +866,5 @@
       }
     ]
   },
-  "last_updated": "2026-07-26T05:43:19.801357"
+  "last_updated": "2026-07-26T16:30:13.169595"
 }
