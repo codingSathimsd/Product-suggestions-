@@ -95,7 +95,7 @@
           "#FFB6C1",
           "#FFD700"
         ],
-        "days_until": 12
+        "days_until": 11
       }
     ],
     "calendar": [
@@ -318,7 +318,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -866,5 +866,5 @@
       }
     ]
   },
-  "last_updated": "2026-07-29T05:34:11.407240"
+  "last_updated": "2026-07-29T16:50:48.118599"
 }
