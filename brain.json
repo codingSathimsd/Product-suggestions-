@@ -14,8 +14,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Heat Damaged Hair - Tested for Indian Women",
-    "slug": "2026-08-13-3-honest-products-for-heat-damaged-hair---tested-for-in",
+    "headline": "3 Honest Products for Hyperpigmentation And Dark Spots - Tested for Indian Women",
+    "slug": "2026-08-14-3-honest-products-for-hyperpigmentation-and-dark-spots-",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
@@ -57,13 +57,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 2,
+    "psychology_index": 3,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 2,
+    "design_index": 0,
     "hook_words": [
       "actually works",
       "honest review",
@@ -317,12 +317,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 60,
+    "total_posts": 61,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-08-14",
+        "headline": "3 Honest Products for Hyperpigmentation And Dark Spots - Tested for Indian Women",
+        "category": "skincare",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-08-13",
         "headline": "3 Honest Products for Heat Damaged Hair - Tested for Indian Women",
@@ -853,17 +862,8 @@
           "blogger": true,
           "telegram": false
         }
-      },
-      {
-        "date": "2026-06-15",
-        "headline": "3 Honest Products for Low Energy And Fatigue Women - Tested for Indian Women",
-        "category": "wellness",
-        "results": {
-          "blogger": true,
-          "telegram": false
-        }
       }
     ]
   },
-  "last_updated": "2026-08-13T16:26:37.941573"
+  "last_updated": "2026-08-14T04:20:27.850627"
 }
