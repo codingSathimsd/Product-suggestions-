@@ -81,6 +81,22 @@
     "check_days_ahead": 14,
     "upcoming": [
       {
+        "name": "Onam",
+        "month": 8,
+        "day": 29,
+        "religion": "Hindu",
+        "categories": [
+          "haircare",
+          "skincare"
+        ],
+        "theme": "kerala_green",
+        "colors": [
+          "#228B22",
+          "#FFD700"
+        ],
+        "days_until": 14
+      },
+      {
         "name": "Ganesh Chaturthi",
         "month": 8,
         "day": 27,
@@ -94,7 +110,7 @@
           "#FF8C00",
           "#FFD700"
         ],
-        "days_until": 13
+        "days_until": 12
       }
     ],
     "calendar": [
@@ -317,7 +333,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -865,5 +881,5 @@
       }
     ]
   },
-  "last_updated": "2026-08-15T03:09:02.506975"
+  "last_updated": "2026-08-15T15:48:04.896276"
 }
