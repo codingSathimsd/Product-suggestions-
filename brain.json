@@ -94,7 +94,7 @@
           "#228B22",
           "#FFD700"
         ],
-        "days_until": 14
+        "days_until": 13
       },
       {
         "name": "Ganesh Chaturthi",
@@ -110,7 +110,7 @@
           "#FF8C00",
           "#FFD700"
         ],
-        "days_until": 12
+        "days_until": 11
       }
     ],
     "calendar": [
@@ -333,7 +333,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -881,5 +881,5 @@
       }
     ]
   },
-  "last_updated": "2026-08-16T03:23:57.919969"
+  "last_updated": "2026-08-16T15:48:26.971264"
 }
