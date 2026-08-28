@@ -19,7 +19,7 @@
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
-    "festival_name": "Ganesh Chaturthi"
+    "festival_name": "Onam"
   },
   "strategy": {
     "active_categories": [
@@ -92,22 +92,6 @@
         "theme": "kerala_green",
         "colors": [
           "#228B22",
-          "#FFD700"
-        ],
-        "days_until": 3
-      },
-      {
-        "name": "Ganesh Chaturthi",
-        "month": 8,
-        "day": 27,
-        "religion": "Hindu",
-        "categories": [
-          "makeup",
-          "skincare"
-        ],
-        "theme": "orange",
-        "colors": [
-          "#FF8C00",
           "#FFD700"
         ],
         "days_until": 1
@@ -333,7 +317,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -881,5 +865,5 @@
       }
     ]
   },
-  "last_updated": "2026-08-27T12:55:38.737167"
+  "last_updated": "2026-08-28T00:33:10.207311"
 }
