@@ -300,7 +300,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -848,5 +848,5 @@
       }
     ]
   },
-  "last_updated": "2026-08-31T08:44:52.889779"
+  "last_updated": "2026-08-31T21:00:12.381532"
 }
