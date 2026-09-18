@@ -18,8 +18,8 @@
     "slug": "2026-09-18-3-honest-products-for-early-signs-of-aging---tested-for",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
-    "festival_active": false,
-    "festival_name": ""
+    "festival_active": true,
+    "festival_name": "Navratri"
   },
   "strategy": {
     "active_categories": [
@@ -79,7 +79,40 @@
   },
   "festivals": {
     "check_days_ahead": 14,
-    "upcoming": [],
+    "upcoming": [
+      {
+        "name": "Navratri",
+        "month": 10,
+        "day": 2,
+        "religion": "Hindu",
+        "categories": [
+          "makeup",
+          "fashion"
+        ],
+        "theme": "navratri",
+        "colors": [
+          "#FF0000",
+          "#FFD700"
+        ],
+        "days_until": 14
+      },
+      {
+        "name": "Durga Puja",
+        "month": 10,
+        "day": 2,
+        "religion": "Hindu",
+        "categories": [
+          "makeup",
+          "skincare"
+        ],
+        "theme": "red_gold",
+        "colors": [
+          "#8B0000",
+          "#FFD700"
+        ],
+        "days_until": 14
+      }
+    ],
     "calendar": [
       {
         "name": "Makar Sankranti",
@@ -300,7 +333,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -848,5 +881,5 @@
       }
     ]
   },
-  "last_updated": "2026-09-18T07:29:15.243572"
+  "last_updated": "2026-09-18T18:36:34.762664"
 }
