@@ -94,7 +94,7 @@
           "#FF0000",
           "#FFD700"
         ],
-        "days_until": 12
+        "days_until": 11
       },
       {
         "name": "Durga Puja",
@@ -110,7 +110,7 @@
           "#8B0000",
           "#FFD700"
         ],
-        "days_until": 12
+        "days_until": 11
       }
     ],
     "calendar": [
@@ -333,7 +333,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "skincare",
@@ -881,5 +881,5 @@
       }
     ]
   },
-  "last_updated": "2026-09-21T08:02:47.020543"
+  "last_updated": "2026-09-21T20:06:04.670975"
 }
