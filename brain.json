@@ -18,8 +18,8 @@
     "slug": "2026-10-06-3-honest-products-for-dandruff-and-itchy-scalp---tested",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
-    "festival_active": false,
-    "festival_name": ""
+    "festival_active": true,
+    "festival_name": "Karva Chauth"
   },
   "strategy": {
     "active_categories": [
@@ -79,7 +79,24 @@
   },
   "festivals": {
     "check_days_ahead": 14,
-    "upcoming": [],
+    "upcoming": [
+      {
+        "name": "Karva Chauth",
+        "month": 10,
+        "day": 20,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup"
+        ],
+        "theme": "bridal_red",
+        "colors": [
+          "#8B0000",
+          "#FFD700"
+        ],
+        "days_until": 14
+      }
+    ],
     "calendar": [
       {
         "name": "Makar Sankranti",
@@ -300,7 +317,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
@@ -848,5 +865,5 @@
       }
     ]
   },
-  "last_updated": "2026-10-06T09:08:03.913711"
+  "last_updated": "2026-10-06T20:29:44.040523"
 }
