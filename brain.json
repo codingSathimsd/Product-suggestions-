@@ -94,7 +94,26 @@
           "#8B0000",
           "#FFD700"
         ],
-        "days_until": 7
+        "days_until": 6
+      },
+      {
+        "name": "Diwali",
+        "month": 10,
+        "day": 28,
+        "religion": "Hindu",
+        "categories": [
+          "skincare",
+          "makeup",
+          "perfume",
+          "haircare"
+        ],
+        "theme": "diwali_gold",
+        "colors": [
+          "#FFD700",
+          "#FF8C00",
+          "#8B0000"
+        ],
+        "days_until": 14
       }
     ],
     "calendar": [
@@ -317,7 +336,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
@@ -865,5 +884,5 @@
       }
     ]
   },
-  "last_updated": "2026-10-14T07:48:44.099891"
+  "last_updated": "2026-10-14T19:37:25.561933"
 }
