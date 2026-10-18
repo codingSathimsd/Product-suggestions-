@@ -94,7 +94,7 @@
           "#8B0000",
           "#FFD700"
         ],
-        "days_until": 3
+        "days_until": 2
       },
       {
         "name": "Diwali",
@@ -113,7 +113,7 @@
           "#FF8C00",
           "#8B0000"
         ],
-        "days_until": 11
+        "days_until": 10
       }
     ],
     "calendar": [
@@ -336,7 +336,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
@@ -884,5 +884,5 @@
       }
     ]
   },
-  "last_updated": "2026-10-18T07:18:27.761519"
+  "last_updated": "2026-10-18T18:15:04.705893"
 }
