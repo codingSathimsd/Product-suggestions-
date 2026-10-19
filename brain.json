@@ -14,8 +14,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
-    "slug": "2026-10-18-3-honest-products-for-oily-skin-and-acne-breakouts---te",
+    "headline": "3 Honest Products for Foundation For Indian Skin Tones - Tested for Indian Women",
+    "slug": "2026-10-19-3-honest-products-for-foundation-for-indian-skin-tones-",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
@@ -57,13 +57,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 2,
+    "psychology_index": 3,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 2,
+    "design_index": 0,
     "hook_words": [
       "actually works",
       "honest review",
@@ -336,12 +336,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 60,
+    "total_posts": 61,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-10-19",
+        "headline": "3 Honest Products for Foundation For Indian Skin Tones - Tested for Indian Women",
+        "category": "makeup",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-10-18",
         "headline": "3 Honest Products for Oily Skin And Acne Breakouts - Tested for Indian Women",
@@ -872,17 +881,8 @@
           "blogger": true,
           "telegram": false
         }
-      },
-      {
-        "date": "2026-08-20",
-        "headline": "3 Honest Products for Dull And Uneven Skin Tone - Tested for Indian Women",
-        "category": "skincare",
-        "results": {
-          "blogger": true,
-          "telegram": false
-        }
       }
     ]
   },
-  "last_updated": "2026-10-18T18:15:04.705893"
+  "last_updated": "2026-10-19T07:56:10.643883"
 }
