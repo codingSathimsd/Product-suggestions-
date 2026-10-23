@@ -14,8 +14,8 @@
   "today": {
     "category": "skincare",
     "problem": "",
-    "headline": "3 Honest Products for Dry And Frizzy Hair - Tested for Indian Women",
-    "slug": "2026-10-22-3-honest-products-for-dry-and-frizzy-hair---tested-for-",
+    "headline": "3 Honest Products for Foundation For Indian Skin Tones - Tested for Indian Women",
+    "slug": "2026-10-23-3-honest-products-for-foundation-for-indian-skin-tones-",
     "psychology": "honest_con_trick",
     "design_style": "minimal_bold",
     "festival_active": true,
@@ -57,13 +57,13 @@
       "loss_aversion",
       "micro_commitment"
     ],
-    "psychology_index": 0,
+    "psychology_index": 1,
     "design_rotation": [
       "minimal_bold",
       "warm_editorial",
       "data_card"
     ],
-    "design_index": 0,
+    "design_index": 1,
     "hook_words": [
       "actually works",
       "honest review",
@@ -320,12 +320,21 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 60,
+    "total_posts": 61,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
     "best_psychology": "honest_con_trick",
     "log": [
+      {
+        "date": "2026-10-23",
+        "headline": "3 Honest Products for Foundation For Indian Skin Tones - Tested for Indian Women",
+        "category": "makeup",
+        "results": {
+          "blogger": true,
+          "telegram": false
+        }
+      },
       {
         "date": "2026-10-22",
         "headline": "3 Honest Products for Dry And Frizzy Hair - Tested for Indian Women",
@@ -856,17 +865,8 @@
           "blogger": true,
           "telegram": false
         }
-      },
-      {
-        "date": "2026-08-24",
-        "headline": "3 Honest Products for Long Lasting Kajal For Indian Eyes - Tested for Indian Women",
-        "category": "makeup",
-        "results": {
-          "blogger": true,
-          "telegram": false
-        }
       }
     ]
   },
-  "last_updated": "2026-10-22T19:22:23.365257"
+  "last_updated": "2026-10-23T07:44:15.307408"
 }
