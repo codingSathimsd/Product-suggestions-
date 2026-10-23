@@ -97,7 +97,7 @@
           "#FF8C00",
           "#8B0000"
         ],
-        "days_until": 6
+        "days_until": 5
       }
     ],
     "calendar": [
@@ -320,7 +320,7 @@
     "open_graph": true
   },
   "performance": {
-    "total_posts": 61,
+    "total_posts": 60,
     "days_running": 60,
     "best_post": "",
     "best_category": "makeup",
@@ -868,5 +868,5 @@
       }
     ]
   },
-  "last_updated": "2026-10-23T07:44:15.307408"
+  "last_updated": "2026-10-23T19:29:18.891888"
 }
